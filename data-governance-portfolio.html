@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Governance Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f3ee;
+    --accent: #1a3a5c;
+    --gold: #c8942a;
+    --rust: #b84c2e;
+    --sage: #2d5a4e;
+    --mist: #e8e4dc;
+    --mid: #6b6560;
+    --border: rgba(10,10,15,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(245,243,238,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--mid);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(26,58,92,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.08;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--mid);
+    max-width: 36ch;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.8rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0f2540;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,58,92,0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO VISUAL ── */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dg-diagram {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+  }
+
+  .dg-diagram svg {
+    width: 100%;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--accent);
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: #fff;
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    padding: 7rem 3rem;
+  }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--mist);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-left { position: sticky; top: 8rem; }
+
+  .about-body p {
+    color: var(--mid);
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .skill-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    background: white;
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  .skill-pill::before {
+    content: '▸';
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects { background: var(--paper); }
+
+  .projects-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .projects-intro {
+    color: var(--mid);
+    font-size: 1rem;
+    line-height: 1.75;
+    grid-column: 2;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  .project-card {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    z-index: 0;
+  }
+
+  .project-card:hover::before { transform: translateY(0); }
+
+  .project-card > * { position: relative; z-index: 1; }
+
+  .project-card:hover .project-num,
+  .project-card:hover .project-title,
+  .project-card:hover .project-desc,
+  .project-card:hover .project-tags span,
+  .project-card:hover .project-icon { color: white; border-color: rgba(255,255,255,0.25); }
+
+  .project-card:hover .project-tags span {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .project-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+
+  .project-icon {
+    font-size: 1.8rem;
+    transition: color 0.3s;
+    color: var(--accent);
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tags span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    color: var(--mid);
+    transition: all 0.3s;
+  }
+
+  /* ── FEATURED (wide card) ── */
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .project-card.featured .project-visual {
+    height: 200px;
+    background: linear-gradient(135deg, rgba(26,58,92,0.08), rgba(200,148,42,0.08));
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    transition: all 0.3s;
+  }
+
+  .project-card.featured:hover .project-visual {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  /* ── METHODOLOGY ── */
+  .methodology {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 7rem 3rem;
+  }
+
+  .methodology .section-tag { color: var(--gold); }
+  .methodology h2 { color: var(--paper); }
+
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 4rem;
+  }
+
+  .framework-item {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+
+  .framework-item:hover { background: #141420; }
+
+  .framework-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .framework-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+  }
+
+  .framework-desc {
+    font-size: 0.83rem;
+    color: rgba(245,243,238,0.5);
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--mist);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .contact-form-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.25s;
+  }
+
+  .contact-link:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateX(6px);
+  }
+
+  .contact-link-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-link-text span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--mid);
+    transition: color 0.25s;
+  }
+
+  .contact-link:hover .contact-link-text span { color: rgba(255,255,255,0.7); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,243,238,0.4);
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── TIMELINE STRIP ── */
+  .timeline {
+    padding: 5rem 3rem;
+    background: white;
+    overflow: hidden;
+  }
+
+  .timeline-inner {
+    position: relative;
+    margin-top: 3rem;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  }
+
+  .timeline-nodes {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    gap: 1rem;
+  }
+
+  .timeline-node {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin: 0 auto 1rem;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s;
+  }
+
+  .timeline-node:hover .timeline-dot {
+    transform: scale(1.6);
+    background: var(--accent);
+  }
+
+  .timeline-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  /* ── ANIMATE ON SCROLL ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero-visual { display: none; }
+    .stats-bar { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    section { padding: 4rem 1.5rem; }
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+    .about-left { position: static; }
+    .projects-header { grid-template-columns: 1fr; }
+    .projects-intro { grid-column: 1; }
+    .project-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .project-card.featured .project-visual { display: none; }
+    .framework-grid { grid-template-columns: 1fr 1fr; }
+    .contact { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DG Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fade-up">
+    <div class="hero-eyebrow">Data Governance Professional</div>
+    <h1>Turning <em>Data</em> into<br>Trusted Assets</h1>
+    <p class="hero-desc">
+      A practitioner-led portfolio spanning data maturity assessments, cataloguing, 
+      lineage mapping, master data management, and operating model deployment—built 
+      on DCAM, DAMA, and real-world enterprise implementations.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        <span>View Projects</span>
+        <span>↓</span>
+      </a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up">
+    <div class="dg-diagram">
+      <svg viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Central hub -->
+        <circle cx="240" cy="220" r="56" fill="#1a3a5c" opacity="0.9"/>
+        <circle cx="240" cy="220" r="44" fill="#1a3a5c"/>
+        <text x="240" y="215" text-anchor="middle" font-family="DM Serif Display, serif" font-size="13" fill="white">DATA</text>
+        <text x="240" y="232" text-anchor="middle" font-family="DM Serif Display, serif" font-size="13" fill="rgba(255,255,255,0.7)">GOVERNANCE</text>
+
+        <!-- Orbital ring -->
+        <circle cx="240" cy="220" r="110" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4 6" opacity="0.3"/>
+        <circle cx="240" cy="220" r="160" stroke="#c8942a" stroke-width="1" stroke-dasharray="2 8" opacity="0.2"/>
+
+        <!-- Nodes -->
+        <!-- Quality -->
+        <line x1="240" y1="110" x2="240" y2="164" stroke="#c8942a" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="240" cy="96" r="26" fill="#f5f3ee" stroke="#c8942a" stroke-width="1.5"/>
+        <text x="240" y="91" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#c8942a">DATA</text>
+        <text x="240" y="103" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#c8942a">QUALITY</text>
+
+        <!-- Security -->
+        <line x1="337" y1="148" x2="280" y2="185" stroke="#2d5a4e" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="352" cy="138" r="26" fill="#f5f3ee" stroke="#2d5a4e" stroke-width="1.5"/>
+        <text x="352" y="133" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#2d5a4e">DATA</text>
+        <text x="352" y="145" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#2d5a4e">SECURITY</text>
+
+        <!-- MDM -->
+        <line x1="337" y1="292" x2="280" y2="255" stroke="#b84c2e" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="352" cy="302" r="26" fill="#f5f3ee" stroke="#b84c2e" stroke-width="1.5"/>
+        <text x="352" y="297" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#b84c2e">MASTER</text>
+        <text x="352" y="309" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#b84c2e">DATA</text>
+
+        <!-- Catalog -->
+        <line x1="240" y1="330" x2="240" y2="276" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="240" cy="344" r="26" fill="#f5f3ee" stroke="#1a3a5c" stroke-width="1.5"/>
+        <text x="240" y="339" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#1a3a5c">DATA</text>
+        <text x="240" y="351" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#1a3a5c">CATALOG</text>
+
+        <!-- Maturity -->
+        <line x1="143" y1="292" x2="200" y2="255" stroke="#6b6560" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="128" cy="302" r="26" fill="#f5f3ee" stroke="#6b6560" stroke-width="1.5"/>
+        <text x="128" y="297" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#6b6560">DCAM</text>
+        <text x="128" y="309" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#6b6560">MATURITY</text>
+
+        <!-- Lineage -->
+        <line x1="143" y1="148" x2="200" y2="185" stroke="#c8942a" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="128" cy="138" r="26" fill="#f5f3ee" stroke="#c8942a" stroke-width="1.5"/>
+        <text x="128" y="133" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#c8942a">DATA</text>
+        <text x="128" y="145" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#c8942a">LINEAGE</text>
+
+        <!-- Outer decorative dots -->
+        <circle cx="240" cy="28" r="4" fill="#c8942a" opacity="0.4"/>
+        <circle cx="430" cy="100" r="3" fill="#1a3a5c" opacity="0.3"/>
+        <circle cx="430" cy="340" r="4" fill="#2d5a4e" opacity="0.3"/>
+        <circle cx="50" cy="340" r="3" fill="#b84c2e" opacity="0.3"/>
+        <circle cx="50" cy="100" r="4" fill="#c8942a" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">8</span>
+    <span class="stat-label">Portfolio Projects</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">DCAM</span>
+    <span class="stat-label">Framework Certified</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">EU</span>
+    <span class="stat-label">Regulatory Coverage</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">MDM</span>
+    <span class="stat-label">Enterprise Scale</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left fade-up">
+    <div class="section-tag">About</div>
+    <h2>Enterprise Data<br>Governance at Scale</h2>
+  </div>
+
+  <div class="about-body fade-up">
+    <p>
+      This portfolio documents end-to-end data governance practice across the full data management 
+      lifecycle — from organizational maturity assessments using the DCAM framework to operational 
+      deployment of Target Operating Models and Integrated Data Systems.
+    </p>
+    <p>
+      Work spans industries with a strong focus on the European regulatory landscape, integrating 
+      GDPR-aligned data security controls, BCBS 239 principles, and enterprise-grade tooling 
+      including Collibra, Tableau, Reltio, and IDS platforms.
+    </p>
+    <p>
+      The methodology is grounded in the DAMA-DMBOK2 knowledge areas, aligning people, processes, 
+      and technology to make data a trusted, governed, and strategically leveraged asset.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-pill">DCAM / DAMA</div>
+      <div class="skill-pill">Collibra</div>
+      <div class="skill-pill">Reltio MDM</div>
+      <div class="skill-pill">Tableau</div>
+      <div class="skill-pill">Data Lineage</div>
+      <div class="skill-pill">GDPR / EU</div>
+      <div class="skill-pill">Data Quality</div>
+      <div class="skill-pill">IDS Platform</div>
+      <div class="skill-pill">TOM Design</div>
+      <div class="skill-pill">Data Catalog</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="projects-header">
+    <div class="fade-up">
+      <div class="section-tag">Projects</div>
+      <h2>Eight Domains<br>of Practice</h2>
+    </div>
+    <p class="projects-intro fade-up">
+      Each project represents a distinct capability domain in enterprise data governance — 
+      from strategic assessment to technical deployment, covering the breadth of modern 
+      data management practice.
+    </p>
+  </div>
+
+  <div class="project-grid">
+
+    <!-- P1: DCAM Assessment — FEATURED -->
+    <a href="#" class="project-card featured fade-up">
+      <div class="project-content">
+        <div class="project-top">
+          <span class="project-num">01 — DCAM Assessment</span>
+          <span class="project-icon">📊</span>
+        </div>
+        <div class="project-title">Data Maturity Assessment<br>via DCAM Framework</div>
+        <p class="project-desc">
+          A full organizational data maturity assessment using the EDM Council's DCAM framework. 
+          Scores capability gaps across data governance, data architecture, data quality, and 
+          data operations. Produces an executive scorecard with a prioritized roadmap for maturity 
+          advancement across 11 capability domains.
+        </p>
+        <div class="project-tags">
+          <span>DCAM</span><span>Maturity Model</span><span>Capability Assessment</span><span>Roadmap</span>
+        </div>
+      </div>
+      <div class="project-visual">📋</div>
+    </a>
+
+    <!-- P2: Data Catalog -->
+    <a href="#" class="project-card fade-up">
+      <div class="project-top">
+        <span class="project-num">02 — Data Catalog</span>
+        <span class="project-icon">🗂️</span>
+      </div>
+      <div class="project-title">Collibra Data Catalog & Tableau Data Mart</div>
+      <p class="project-desc">
+        End-to-end data catalog implementation in Collibra covering business glossary, 
+        data assets, stewardship workflows, and lineage graphs. Connected to a Tableau 
+        data mart for governed BI consumption with certified data source badges.
+      </p>
+      <div class="project-tags">
+        <span>Collibra</span><span>Tableau</span><span>Data Mart</span><span>Business Glossary</span>
+      </div>
+    </a>
+
+    <!-- P3: Data Mapping -->
+    <a href="#" class="project-card fade-up">
+      <div class="project-top">
+        <span class="project-num">03 — Data Mapping</span>
+        <span class="project-icon">🗺️</span>
+      </div>
+      <div class="project-title">European Data Flow Mapping & Maturity Landscape</div>
+      <p class="project-desc">
+        Cross-border data flow mapping across the European regulatory landscape. 
+        Identifies data subjects, processing activities, system interfaces, and 
+        GDPR transfer mechanisms. Outputs a Data_Maturity_Europe benchmark and 
+        visual flow diagrams per regulation.
+      </p>
+      <div class="project-tags">
+        <span>Data Mapping</span><span>GDPR</span><span>EU Landscape</span><span>Lineage</span>
+      </div>
+    </a>
+
+    <!-- P4: Data Security -->
+    <a href="#" class="project-card fade-up">
+      <div class="project-top">
+        <span class="project-num">04 — Data Security</span>
+        <span class="project-icon">🔐</span>
+      </div>
+      <div class="project-title">Active Data Security for European BI</div>
+      <p class="project-desc">
+        Implementation of active data security controls on a European BI platform. 
+        Covers row-level security, column masking, data classification labels, 
+        access request workflows, and audit trail reporting aligned to GDPR Article 25 
+        (privacy by design).
+      </p>
+      <div class="project-tags">
+        <span>Data Security</span><span>RLS</span><span>Classification</span><span>GDPR Art.25</span>
+      </div>
+    </a>
+
+    <!-- P5: Data Quality -->
+    <a href="#" class="project-card fade-up">
+      <div class="project-top">
+        <span class="project-num">05 — Data Quality</span>
+        <span class="project-icon">✅</span>
+      </div>
+      <div class="project-title">Active Data Quality Management — European BI</div>
+      <p class="project-desc">
+        Proactive DQ rule engine implemented on a European BI reporting layer. 
+        Profiles completeness, uniqueness, validity, and timeliness dimensions. 
+        Publishes a live data quality scorecard with threshold alerting and 
+        automated remediation workflows.
+      </p>
+      <div class="project-tags">
+        <span>DQ Rules</span><span>Profiling</span><span>Scorecard</span><span>DAMA</span>
+      </div>
+    </a>
+
+    <!-- P6: MDM — FEATURED -->
+    <a href="#" class="project-card featured fade-up">
+      <div class="project-content">
+        <div class="project-top">
+          <span class="project-num">06 — Master Data Management</span>
+          <span class="project-icon">🏛️</span>
+        </div>
+        <div class="project-title">Client MDM with CDL & Reltio</div>
+        <p class="project-desc">
+          Enterprise master data management for Client entities using the Common Data Layer (CDL) 
+          architecture with Reltio as the MDM hub. Covers entity resolution, golden record 
+          creation, survivorship rules, and real-time API syndication to downstream CRM and 
+          analytics systems. Concrete use-case examples demonstrating deduplication rates, 
+          match confidence scores, and stewardship queue management.
+        </p>
+        <div class="project-tags">
+          <span>Reltio</span><span>CDL</span><span>Golden Record</span><span>Entity Resolution</span><span>MDM Hub</span>
+        </div>
+      </div>
+      <div class="project-visual">🏛️</div>
+    </a>
+
+    <!-- P7: TOM -->
+    <a href="#" class="project-card fade-up">
+      <div class="project-top">
+        <span class="project-num">07 — Operating Model</span>
+        <span class="project-icon">🏗️</span>
+      </div>
+      <div class="project-title">Target Operating Model Deployment</div>
+      <p class="project-desc">
+        Design and deployment of a Data Governance Target Operating Model (TOM). 
+        Defines roles (CDO, Data Owners, Stewards, Custodians), governance forums, 
+        RACI matrices, policy hierarchy, and operating cadence. Includes a change 
+        management playbook for organizational adoption.
+      </p>
+      <div class="project-tags">
+        <span>TOM</span><span>RACI</span><span>DG Council</span><span>Change Mgmt</span>
+      </div>
+    </a>
+
+    <!-- P8: IDS Platform -->
+    <a href="#" class="project-card fade-up">
+      <div class="project-top">
+        <span class="project-num">08 — Platform Deployment</span>
+        <span class="project-icon">⚙️</span>
+      </div>
+      <div class="project-title">Target Operating Platform — IDS Deployment</div>
+      <p class="project-desc">
+        End-to-end deployment of the Integrated Data System (IDS) as the target data 
+        platform. Architecture diagrams, data ingestion pipelines, environment 
+        provisioning runbooks, and governance integration checkpoints. Bridges 
+        TOM design with operational platform reality.
+      </p>
+      <div class="project-tags">
+        <span>IDS</span><span>Platform Arch</span><span>Pipeline</span><span>Data Ops</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<div class="timeline">
+  <div class="section-tag fade-up">Governance Journey</div>
+  <div class="timeline-inner fade-up">
+    <div class="timeline-line"></div>
+    <div class="timeline-nodes">
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">DCAM<br>Assess</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">Data<br>Catalog</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">EU<br>Mapping</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">Security<br>Controls</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">DQ<br>Engine</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">MDM<br>Reltio</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">TOM<br>Deploy</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">IDS<br>Platform</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- METHODOLOGY -->
+<section class="methodology" id="methodology">
+  <div class="fade-up">
+    <div class="section-tag">Methodology</div>
+    <h2>Frameworks & Standards</h2>
+  </div>
+  <div class="framework-grid fade-up">
+    <div class="framework-item">
+      <span class="framework-icon">📐</span>
+      <div class="framework-title">DCAM Framework</div>
+      <p class="framework-desc">EDM Council's Data Management Capability Assessment Model used to benchmark and advance data management maturity across 11 capability areas.</p>
+    </div>
+    <div class="framework-item">
+      <span class="framework-icon">📚</span>
+      <div class="framework-title">DAMA-DMBOK2</div>
+      <p class="framework-desc">All projects align to DAMA's 11 knowledge areas covering data governance, architecture, modelling, storage, security, integration, and quality.</p>
+    </div>
+    <div class="framework-item">
+      <span class="framework-icon">🇪🇺</span>
+      <div class="framework-title">EU Regulatory</div>
+      <p class="framework-desc">Hands-on application of GDPR Articles 5, 17, 25, 30 & 35; BCBS 239 data lineage principles; and EBA data governance guidelines.</p>
+    </div>
+    <div class="framework-item">
+      <span class="framework-icon">🔄</span>
+      <div class="framework-title">Agile DG Delivery</div>
+      <p class="framework-desc">Iterative governance deployment using sprint-based delivery, OKR alignment, and continuous improvement loops tied to data quality KPIs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="fade-up">
+    <div class="section-tag">Contact</div>
+    <h2>Open to Data<br>Governance Roles</h2>
+    <p style="color:var(--mid);margin-top:1rem;line-height:1.75;max-width:36ch;">
+      Actively seeking senior data governance, CDO advisory, or data strategy roles 
+      in organizations committed to treating data as a strategic enterprise asset.
+    </p>
+  </div>
+
+  <div class="contact-form-area fade-up">
+    <a href="https://github.com" class="contact-link">
+      <span class="contact-link-icon">🐙</span>
+      <div class="contact-link-text">
+        <strong>GitHub Portfolio</strong>
+        <span>github.com/your-username</span>
+      </div>
+      <span style="margin-left:auto;font-size:1.2rem;">→</span>
+    </a>
+    <a href="https://linkedin.com" class="contact-link">
+      <span class="contact-link-icon">💼</span>
+      <div class="contact-link-text">
+        <strong>LinkedIn Profile</strong>
+        <span>linkedin.com/in/your-profile</span>
+      </div>
+      <span style="margin-left:auto;font-size:1.2rem;">→</span>
+    </a>
+    <a href="mailto:your@email.com" class="contact-link">
+      <span class="contact-link-icon">✉️</span>
+      <div class="contact-link-text">
+        <strong>Email</strong>
+        <span>your@email.com</span>
+      </div>
+      <span style="margin-left:auto;font-size:1.2rem;">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Data Governance Portfolio · Built for GitHub Pages</span>
+  <span>DCAM · DAMA · GDPR · MDM · IDS</span>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Stagger project cards
+  document.querySelectorAll('.project-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.07}s`;
+  });
+</script>
+</body>
+</html>
