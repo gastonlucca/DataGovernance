@@ -24,7 +24,7 @@ Each project is self-contained with architecture diagrams, implementation exampl
 
 | # | Project | Domain | Key Tools | Status |
 |---|---------|--------|-----------|--------|
-| [01][1](https://github.com/gastonlucca/DataGovernance/tree/Projecto-1)| **DCAM Data Maturity Assessment** | Governance Strategy | DCAM, Excel, PowerPoint | ✅ Complete |
+| [01](https://github.com/gastonlucca/DataGovernance/tree/Projecto-1)| **DCAM Data Maturity Assessment** | Governance Strategy | DCAM, Excel, PowerPoint | ✅ Complete |
 | [02](./02-data-catalog-collibra/) | **Data Catalog in Collibra & Tableau Data Mart** | Data Catalog | Collibra, Tableau, SQL | ✅ Complete |
 | [03](./03-data-mapping-europe/) | **European Data Flow Mapping & Maturity Landscape** | Data Lineage / Privacy | DrawIO, GDPR, ROPA | ✅ Complete |
 | [04](./04-data-security-europe-bi/) | **Active Data Security — European BI** | Data Security | SQL RLS, Tableau, Azure AD | ✅ Complete |
