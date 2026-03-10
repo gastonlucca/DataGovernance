@@ -1,119 +1,167 @@
-# 🗄️ Data Governance Portfolio
+# 📊 Project 01 — DCAM Data Maturity Assessment
 
-> **Practitioner-led projects spanning the full data governance lifecycle**  
-> DCAM · DAMA-DMBOK2 · Collibra · Reltio · Tableau · IDS · EU Regulatory
-
----
-
-## About This Portfolio
-
-This repository documents eight end-to-end data governance projects built across enterprise environments, covering every major capability in the DAMA-DMBOK2 wheel — from organizational maturity assessment to the deployment of a governed technical data platform.
-
-Each project is self-contained with architecture diagrams, implementation examples, SQL/Python code, configuration templates, and operational runbooks. Together, they represent a complete, deployable data governance programme.
-
-**Frameworks & Standards applied:**
-- 📐 EDM Council **DCAM** — Data Management Capability Assessment Model
-- 📚 **DAMA-DMBOK2** — 11 Knowledge Areas
-- 🇪🇺 **GDPR** Articles 5, 17, 25, 30, 32, 35, 46
-- 🏦 **BCBS 239** — Data lineage and risk data aggregation principles
-- 🔄 **Agile Data Governance** — Sprint-based iterative delivery
+> **Framework:** EDM Council DCAM (Data Management Capability Assessment Model)  
+> **Scope:** Enterprise-wide organizational data maturity evaluation  
+> **Output:** Executive scorecard · Gap analysis · Prioritized roadmap
 
 ---
 
-## Projects
+## Overview
 
-| # | Project | Domain | Key Tools | Status |
-|---|---------|--------|-----------|--------|
-| [01](./01-dcam-assessment/) | **DCAM Data Maturity Assessment** | Governance Strategy | DCAM, Excel, PowerPoint | ✅ Complete |
-| [02](./02-data-catalog-collibra/) | **Data Catalog in Collibra & Tableau Data Mart** | Data Catalog | Collibra, Tableau, SQL | ✅ Complete |
-| [03](./03-data-mapping-europe/) | **European Data Flow Mapping & Maturity Landscape** | Data Lineage / Privacy | DrawIO, GDPR, ROPA | ✅ Complete |
-| [04](./04-data-security-europe-bi/) | **Active Data Security — European BI** | Data Security | SQL RLS, Tableau, Azure AD | ✅ Complete |
-| [05](./05-data-quality-europe-bi/) | **Active Data Quality — European BI** | Data Quality | Great Expectations, Python, Collibra DQ | ✅ Complete |
-| [06](./06-master-data-reltio/) | **Master Data Management: CDL & Reltio** | Master Data | Reltio, CDL, Kafka, Python | ✅ Complete |
-| [07](./07-target-operating-model/) | **Target Operating Model Deployment** | DG Operating Model | RACI, Policy Framework | ✅ Complete |
-| [08](./08-target-operating-platform-ids/) | **Target Operating Platform — IDS** | Data Platform | dbt, Spark, Collibra, IDS | ✅ Complete |
+This project delivers a full organizational **Data Maturity Assessment** using the EDM Council's DCAM framework — the industry-standard methodology for evaluating how effectively an organization manages data as a strategic asset.
+
+The assessment measures maturity across **11 DCAM capability domains**, producing a scored baseline, a gap analysis against target state, and an executive-ready roadmap with prioritized initiatives ranked by business impact and implementation effort.
 
 ---
 
-## How the Projects Connect
+## Business Problem
 
-These aren't isolated projects — they form an integrated governance programme:
+Most organizations operate without a clear understanding of their current data management capabilities. This creates:
 
-```
-ASSESS → DESIGN → BUILD → OPERATE
+- Undiscovered data risks (quality, security, compliance)
+- Redundant or contradictory data initiatives
+- Executive decisions based on unreliable data
+- Difficulty justifying data governance investment
 
-[01 DCAM]          Diagnoses maturity gaps and defines the roadmap
-    ↓
-[07 TOM]           Designs the operating model to execute the roadmap
-    ↓
-[02 Catalog]       Establishes the metadata and stewardship foundation
-[03 Mapping]       Maps data flows for compliance and lineage
-    ↓
-[04 Security]      Enforces access controls on governed data
-[05 Quality]       Validates and monitors data fitness for use
-[06 MDM]           Creates a single source of truth for master entities
-    ↓
-[08 IDS Platform]  Deploys the governed technical platform — all controls embedded
-```
+A DCAM assessment provides the objective baseline needed to make the business case for data governance and prioritize investment.
 
 ---
 
-## Skills & Technologies
+## DCAM Capability Domains Assessed
 
-```
-Governance Frameworks    DCAM · DAMA-DMBOK2 · GDPR · BCBS 239
-Platforms & Tools        Collibra · Reltio · Tableau · IDS · dbt · Kafka · Spark
-Languages                SQL · Python · YAML
-Cloud                    Azure Data Factory · Azure AD · Delta Lake
-Architecture             Medallion Architecture · CDL · Microservices · Event-driven
-Process                  RACI · Policy Hierarchy · Stewardship Workflows · TOM Design
-```
+| # | Capability Domain | Weight | Assessed Score | Target Score |
+|---|-------------------|--------|---------------|--------------|
+| 1 | Data Strategy | High | ██░░░ 2.1 | 4.0 |
+| 2 | Business Case | High | ███░░ 2.8 | 4.0 |
+| 3 | Program Funding | Medium | ██░░░ 2.0 | 3.5 |
+| 4 | Data Governance | Critical | █░░░░ 1.5 | 4.5 |
+| 5 | Data Architecture | High | ███░░ 2.9 | 4.0 |
+| 6 | Technology Architecture | Medium | ████░ 3.2 | 4.0 |
+| 7 | Data Quality | Critical | ██░░░ 2.1 | 4.5 |
+| 8 | Data Operations | Medium | ███░░ 2.7 | 3.5 |
+| 9 | Data Platform | High | ███░░ 3.0 | 4.0 |
+| 10 | Data Ecosystem | Medium | ██░░░ 2.4 | 3.5 |
+| 11 | Communications | Low | ███░░ 2.6 | 3.5 |
+
+> Scale: 1 = Initial · 2 = Managed · 3 = Defined · 4 = Measured · 5 = Optimizing
 
 ---
 
-## Repository Structure
+## Assessment Methodology
+
+### Phase 1 — Stakeholder Interviews
+- C-suite and senior leadership (CDO, CTO, CFO, CRO)
+- Data domain owners across business units
+- Technical leads: data engineers, architects, BI developers
+- Data stewards and custodians
+
+### Phase 2 — Evidence Collection
+- Review of existing data policies and standards documentation
+- Analysis of data architecture artifacts and data dictionaries
+- Audit of current tooling landscape (catalog, lineage, quality tools)
+- Review of past data incidents and quality reports
+
+### Phase 3 — Scoring & Calibration
+- Individual domain scoring using DCAM's 5-level maturity rubric
+- Cross-domain calibration workshop with key stakeholders
+- Validation session to confirm findings and resolve scoring disputes
+
+### Phase 4 — Roadmap Development
+- Gap prioritization using business impact × implementation effort matrix
+- Initiative mapping to DCAM domain improvements
+- 12/24/36-month phased roadmap with KPIs per initiative
+- Executive presentation deck and detailed findings report
+
+---
+
+## Key Deliverables
 
 ```
-📁 data-governance-portfolio/
-├── 📄 README.md                           ← This file
-├── 🌐 index.html                          ← Portfolio website (GitHub Pages)
-├── 📁 01-dcam-assessment/
-│   └── 📄 README.md + templates + scorecard
-├── 📁 02-data-catalog-collibra/
-│   └── 📄 README.md + config + SQL + glossary
-├── 📁 03-data-mapping-europe/
-│   └── 📄 README.md + flow diagrams + ROPA
-├── 📁 04-data-security-europe-bi/
-│   └── 📄 README.md + RLS scripts + classification
-├── 📁 05-data-quality-europe-bi/
-│   └── 📄 README.md + DQ rules + scorecard spec
-├── 📁 06-master-data-reltio/
-│   └── 📄 README.md + Reltio config + syndication code
-├── 📁 07-target-operating-model/
-│   └── 📄 README.md + RACI + policy hierarchy + playbook
-└── 📁 08-target-operating-platform-ids/
-    └── 📄 README.md + architecture + runbooks + dbt config
+01-dcam-assessment/
+├── 📄 README.md                          ← This file
+├── 📊 assessment-scorecard.xlsx          ← Domain scores, evidence log, maturity radar
+├── 📋 interview-guide.md                 ← Stakeholder interview question bank
+├── 📐 gap-analysis.md                    ← Current vs target state per domain
+├── 🗺️  roadmap-initiatives.xlsx          ← Prioritized initiative backlog
+├── 📑 executive-report-template.pptx     ← Executive summary presentation
+└── 📁 templates/
+    ├── evidence-collection-checklist.md
+    ├── domain-scoring-rubric.md
+    └── dcam-heatmap-template.xlsx
 ```
 
 ---
 
-## Open to Opportunities
+## Sample Findings — Data Governance Domain (Score: 1.5 / 5)
 
-I am actively seeking senior data governance, data strategy, and CDO advisory roles in organizations committed to treating data as a strategic, trusted, and well-governed asset.
+**Current State:**
+- No formal data governance program or council in place
+- Data ownership is informal and undocumented
+- No enterprise-wide data policies or standards
+- Data stewardship activities are ad-hoc and reactive
 
-**Areas of expertise:**
-- Data Governance Programme Design & Delivery
-- DCAM / DAMA Maturity Assessments
-- CDO Office Setup & Target Operating Model
-- European Regulatory Compliance (GDPR, BCBS 239)
-- Enterprise Data Catalog & Master Data Management
-- Data Quality Engineering & Active DQ Frameworks
-- Governed Data Platform Architecture
+**Target State (Score: 4.5):**
+- Active Data Governance Council with executive sponsorship
+- Documented data ownership for all critical data domains
+- Enforced data policies with audit and exception management
+- Proactive stewardship with measurable DQ SLAs
 
-📧 [your@email.com](mailto:your@email.com)  
-💼 [LinkedIn](https://linkedin.com/in/your-profile)  
-🌐 [Portfolio Website](https://your-username.github.io)
+**Gap Initiatives:**
+1. Establish DG Council charter and operating cadence
+2. Define and communicate Data Owner/Steward roles
+3. Publish enterprise data policy framework
+4. Implement data stewardship workflow tooling (Collibra)
 
 ---
 
-*Built with DAMA-DMBOK2 · DCAM · and a genuine belief that well-governed data changes organizations.*
+## Maturity Radar Chart
+
+```
+                    Data Strategy
+                         5
+                    _____|_____
+     Communications/     |     \Data Governance
+                 4 /     |      \ 1.5
+                  /      |       \
+     Data        /       |        \ Business
+    Ecosystem 2.4\       |        / Case 2.8
+                  \      |       /
+                 3 \     |      /
+      Data           \   |   /  Program
+     Platform 3.0     \  |  /   Funding 2.0
+                       \_|_/
+                    Data Quality 2.1
+```
+
+---
+
+## Tools & Technologies Used
+
+| Tool | Purpose |
+|------|---------|
+| **DCAM Assessment Portal** | Official EDM Council scoring platform |
+| **Microsoft Excel** | Scoring workbooks, radar charts, heatmaps |
+| **PowerPoint** | Executive presentation and findings report |
+| **Miro / Mural** | Virtual workshop facilitation |
+| **Confluence** | Evidence repository and documentation |
+
+---
+
+## Skills Demonstrated
+
+- `Data Governance Strategy` `DCAM Framework` `Maturity Modelling`
+- `Stakeholder Engagement` `Executive Communication` `Workshop Facilitation`
+- `Gap Analysis` `Roadmap Planning` `Change Management`
+- `DAMA-DMBOK2 Alignment` `Data Program Design`
+
+---
+
+## Related Projects
+
+- [02 — Data Catalog in Collibra](../02-data-catalog-collibra/) — Addresses Data Governance domain gaps
+- [07 — Target Operating Model](../07-target-operating-model/) — Operationalizes roadmap initiatives
+- [08 — IDS Platform Deployment](../08-target-operating-platform-ids/) — Technology architecture uplift
+
+---
+
+*Part of the [Data Governance Portfolio](../README.md) · DCAM © EDM Council*
