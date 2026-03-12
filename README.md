@@ -112,7 +112,7 @@ I am actively seeking senior data governance, data strategy, and CDO advisory ro
 - Data Quality Engineering & Active DQ Frameworks
 - Governed Data Platform Architecture
 
-📧 [your@email.com](gastonlucca@hotmail.com)  
+📧 [gastonlucca@hotmail.com](gastonlucca@hotmail.com)  
 💼 [LinkedIn](https://www.linkedin.com/in/gastonlucca/?locale=en_US)  
 🌐 [Portfolio Website](https://github.com/gastonlucca/DataGovernance)
 
