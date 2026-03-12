@@ -27,13 +27,13 @@ Each project is self-contained with architecture diagrams, implementation exampl
 | # | Project | Domain | Key Tools | Status |
 |---|---------|--------|-----------|--------|
 | [01](https://github.com/gastonlucca/DataGovernance/tree/Projecto-1)| **DCAM Data Maturity Assessment** | Governance Strategy | DCAM, Excel, PowerPoint | ✅ Complete |
-| [02](./02-data-catalog-collibra/) | **Data Catalog in Collibra & Tableau Data Mart** | Data Catalog | Collibra, Tableau, SQL | ✅ Complete |
-| [03](./03-data-mapping-europe/) | **European Data Flow Mapping & Maturity Landscape** | Data Lineage / Privacy | DrawIO, GDPR, ROPA | ✅ Complete |
-| [04](./04-data-security-europe-bi/) | **Active Data Security — European BI** | Data Security | SQL RLS, Tableau, Azure AD | ✅ Complete |
-| [05](./05-data-quality-europe-bi/) | **Active Data Quality — European BI** | Data Quality | Great Expectations, Python, Collibra DQ | ✅ Complete |
-| [06](./06-master-data-reltio/) | **Master Data Management: CDL & Reltio** | Master Data | Reltio, CDL, Kafka, Python | ✅ Complete |
+| [02](./02-data-catalog-collibra/) | **Data Catalog in Collibra & Tableau site and BI Europe Data Mart** | Data Catalog | Collibra, Tableau, SQL | ✅ Complete |
+| [03](./03-data-mapping-europe/) | **European Data Flow Mapping & Maturity Landscape** | Data Lineage / Privacy | Power point, Collibra, Confluence | ✅ Complete |
+| [04](./04-data-security-europe-bi/) | **Active Data Security — European BI** | Data Security | SQL , Tableau, AWS | ✅ Complete |
+| [05](./05-data-quality-europe-bi/) | **Active Data Quality — European BI** | Data Quality | Collibra DQ, Informatica Cloude, Phyton | ✅ Complete |
+| [06](./06-master-data-reltio/) | **Master Data Management: CDL & Reltio** | Master Data | Reltio, CDL, AWS, SQL | ✅ Complete |
 | [07](./07-target-operating-model/) | **Target Operating Model Deployment** | DG Operating Model | RACI, Policy Framework | ✅ Complete |
-| [08](./08-target-operating-platform-ids/) | **Target Operating Platform — IDS** | Data Platform | dbt, Spark, Collibra, IDS | ✅ Complete |
+| [08](./08-target-operating-platform-ids/) | **Target Operating Platform — ** | Data Platform |  Collibra, AWS, Tableau, Power Center ETL | ✅ Complete |
 
 ---
 
@@ -105,9 +105,8 @@ I am actively seeking senior data governance, data strategy, and CDO advisory ro
 
 **Areas of expertise:**
 - Data Governance Programme Design & Delivery
-- DCAM / DAMA Maturity Assessments
+- DCAM  Maturity Assessments
 - CDO Office Setup & Target Operating Model
-- European Regulatory Compliance (GDPR, BCBS 239)
 - Enterprise Data Catalog & Master Data Management
 - Data Quality Engineering & Active DQ Frameworks
 - Governed Data Platform Architecture
