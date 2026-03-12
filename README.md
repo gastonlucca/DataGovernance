@@ -3,7 +3,7 @@
 Link: file:///C:/Users/User/Desktop/Portfolio%20BI%20Github/Portfolio%20Data%20Governance%20(new)/data-governance-portfolio.html#
 
 > **Practitioner-led projects spanning the full data governance lifecycle**  
-> DCAM · DAMA-DMBOK2 (ongoing)  · Collibra · Reltio · Tableau · IDS · EU Regulatory
+> DCAM · DAMA-DMBOK2 (ongoing)  · Collibra · Reltio (MDM) · Tableau · Informatica Cloud DQ 
 
 ---
 
@@ -16,8 +16,8 @@ Each project is self-contained with architecture diagrams, implementation exampl
 **Frameworks & Standards applied:**
 - 📐 EDM Council **DCAM** — Data Management Capability Assessment Model (Certify in 2024)
 - 📚 **DAMA-DMBOK2** — 11 Knowledge Areas (Certification ongoing)
-- 🇪🇺 **GDPR** Customer Data and HR data 
-- 🏦 **Main experince** — Data lineage and risk data aggregation principles
+- 🇪🇺  **GDPR** Customer Data, Financial data and HR data 
+- 🏦 **Main experince** — Data lineage - Dta quality - Data mapping - Active data security - Data Platform - Operated Traget Model 
 - 🔄 **Agile Data Governance** — Sprint-based iterative delivery
 
 ---
@@ -33,7 +33,7 @@ Each project is self-contained with architecture diagrams, implementation exampl
 | [05](./05-data-quality-europe-bi/) | **Active Data Quality — European BI** | Data Quality | Collibra DQ, Informatica Cloude, Phyton | ✅ Complete |
 | [06](./06-master-data-reltio/) | **Master Data Management: CDL & Reltio** | Master Data | Reltio, CDL, AWS, SQL | ✅ Complete |
 | [07](./07-target-operating-model/) | **Target Operating Model Deployment** | DG Operating Model | RACI, Policy Framework | ✅ Complete |
-| [08](./08-target-operating-platform-ids/) | **Target Operating Platform — ** | Data Platform |  Collibra, AWS, Tableau, Power Center ETL | ✅ Complete |
+| [08](./08-target-operating-platform-ids/) | **Target Operating Platform** | Data Platform |  Collibra, AWS, Tableau, Power Center ETL | ✅ Complete |
 
 ---
 
