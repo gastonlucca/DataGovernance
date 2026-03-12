@@ -3,7 +3,7 @@
 Link: file:///C:/Users/User/Desktop/Portfolio%20BI%20Github/Portfolio%20Data%20Governance%20(new)/data-governance-portfolio.html#
 
 > **Practitioner-led projects spanning the full data governance lifecycle**  
-> DCAM · DAMA-DMBOK2 · Collibra · Reltio · Tableau · IDS · EU Regulatory
+> DCAM · DAMA-DMBOK2 (ongoing)  · Collibra · Reltio · Tableau · IDS · EU Regulatory
 
 ---
 
@@ -14,10 +14,10 @@ This repository documents eight end-to-end data governance projects built across
 Each project is self-contained with architecture diagrams, implementation examples, SQL/Python code, configuration templates, and operational runbooks. Together, they represent a complete, deployable data governance programme.
 
 **Frameworks & Standards applied:**
-- 📐 EDM Council **DCAM** — Data Management Capability Assessment Model
-- 📚 **DAMA-DMBOK2** — 11 Knowledge Areas
-- 🇪🇺 **GDPR** Articles 5, 17, 25, 30, 32, 35, 46
-- 🏦 **BCBS 239** — Data lineage and risk data aggregation principles
+- 📐 EDM Council **DCAM** — Data Management Capability Assessment Model (Certify in 2024)
+- 📚 **DAMA-DMBOK2** — 11 Knowledge Areas (Certification ongoing)
+- 🇪🇺 **GDPR** Customer Data and HR data 
+- 🏦 **Main experince** — Data lineage and risk data aggregation principles
 - 🔄 **Agile Data Governance** — Sprint-based iterative delivery
 
 ---
@@ -112,10 +112,10 @@ I am actively seeking senior data governance, data strategy, and CDO advisory ro
 - Data Quality Engineering & Active DQ Frameworks
 - Governed Data Platform Architecture
 
-📧 [your@email.com](mailto:your@email.com)  
-💼 [LinkedIn](https://linkedin.com/in/your-profile)  
-🌐 [Portfolio Website](https://your-username.github.io)
+📧 [your@email.com](gastonlucca@hotmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/gastonlucca/?locale=en_US)  
+🌐 [Portfolio Website](https://github.com/gastonlucca/DataGovernance)
 
 ---
 
-*Built with DAMA-DMBOK2 · DCAM · and a genuine belief that well-governed data changes organizations.*
+*Built with · DCAM · and a genuine belief that well-governed data changes organizations.*
