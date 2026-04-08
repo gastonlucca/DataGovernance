@@ -17,7 +17,7 @@ Each project is self-contained with architecture diagrams, implementation exampl
 - 📐 EDM Council **DCAM** — Data Management Capability Assessment Model (Certify in 2024)
 - 📚 **DAMA-DMBOK2** — 11 Knowledge Areas (Certification ongoing)
 - 🇪🇺  **GDPR** Customer Data, Financial data and HR data 
-- 🏦 **Main experince** — Data lineage - Dta quality - Data mapping - Active data security - Data Platform - Operated Traget Model 
+- 🏦 **Main experince** — Data lineage - Data quality - Data mapping - Active data security - Data Platform - Operated Traget Model 
 - 🔄 **Agile Data Governance** — Sprint-based iterative delivery
 
 ---
